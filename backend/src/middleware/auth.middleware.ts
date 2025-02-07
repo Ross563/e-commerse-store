@@ -11,42 +11,30 @@ export const protectRoute = async (
     const accessToken: string | undefined = req.cookies.accessToken;
 
     if (!accessToken) {
-      res
-        .status(401)
-        .json({ message: "Unauthorized - No access token provided" });
+      res.status(401).json({ message: "user not Logged in" });
       return;
     }
 
-    try {
-      const decoded = jwt.verify(
-        accessToken,
-        process.env.ACCESS_TOKEN_SECRET as string
-      ) as JwtPayload;
+    const decoded = jwt.verify(
+      accessToken,
+      process.env.ACCESS_TOKEN_SECRET as string
+    ) as JwtPayload;
 
-      const queryText = "SELECT id, name, email, role FROM users WHERE id = $1";
-      const { rows } = await db.query(queryText, [decoded.userId]);
+    const queryText = "SELECT id, name, email, role FROM users WHERE id = $1";
+    const { rows } = await db.query(queryText, [decoded.userId]);
 
-      if (rows.length === 0) {
-        res.status(401).json({ message: "User not found" });
-        return;
-      }
-
-      // Attach the user details to the request object
-      req.user = rows[0];
-
-      next();
-    } catch (error) {
-      if (error instanceof jwt.TokenExpiredError) {
-        res
-          .status(401)
-          .json({ message: "Unauthorized - Access token expired" });
-        return;
-      }
-      throw error;
+    if (rows.length === 0) {
+      res.status(401).json({ message: "User not found" });
+      return;
     }
+
+    // Attach the user details to the request object
+    req.user = rows[0];
+
+    next();
   } catch (error) {
     console.error("Error in protectRoute middleware", (error as Error).message);
-    res.status(401).json({ message: "Unauthorized - Invalid access token" });
+    res.status(401).json({ message: "Error in protectRoute middleware" });
     return;
   }
 };
