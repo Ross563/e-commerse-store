@@ -1,5 +1,13 @@
 import { Request } from "express";
 
+declare module "jsonwebtoken";
+declare module "bcryptjs";
+declare module "express";
+declare module "cookie-parser";
+declare module "cors";
+declare module "pg";
+declare module "multer";
+
 declare module "express" {
   interface Request {
     user?: {
