@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "rootDir": "src",
+    "outDir": "dist",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*.ts", "src/types/global.types.ts"]
+}
+
+// module: "NodeNext"
+// Description: This setting specifies the module code generation method. "NodeNext" is a module system that aligns with the Node.js ESM (ECMAScript Module) support.
+// Usage: It allows you to use ES modules (import/export) in a way that is compatible with Node.js's native ESM support.
+
+// moduleResolution: "NodeNext"
+// Description: This setting determines how module paths are resolved. "NodeNext" is a module resolution strategy that aligns with Node.js's ESM resolution.
+// Usage: It ensures that TypeScript resolves modules in a way that is compatible with Node.js's native ESM support, including support for .mjs and .cjs files.
+
+// strict: true
+// Description: This setting enables all strict type-checking options in TypeScript.
+// Usage: It turns on a set of type-checking rules that make TypeScript more strict and help catch potential errors early. This includes options like strictNullChecks, strictFunctionTypes, strictPropertyInitialization, and more.
+
+// esModuleInterop: true
+// Description: This setting enables interoperability between CommonJS and ES Modules.
+// Usage: It allows you to import CommonJS modules using ES module syntax (import x from 'x'). It also ensures that default imports from CommonJS modules are handled correctly.
+
+// resolveJsonModule: true
+// Description: This setting allows you to import JSON files as modules.
+// Usage: It enables TypeScript to understand and type-check JSON imports, so you can do things like import data from './data.json' and get proper type information for the imported JSON data.

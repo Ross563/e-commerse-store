@@ -1,0 +1,8 @@
+.gradient-bg {
+  background: radial-gradient(
+    ellipse at top,
+    rgba(178, 34, 197, 0.3) 0%,
+    rgba(106, 10, 41, 0.2) 45%,
+    rgba(0, 0, 0, 0.1) 50%
+  );
+}
