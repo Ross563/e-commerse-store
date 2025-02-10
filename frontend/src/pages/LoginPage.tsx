@@ -95,7 +95,10 @@ const LoginPage: React.FC = () => {
             >
               {loading ? (
                 <>
-                  <Loader className="mr-2 h-5 w-5 animate-spin" aria-hidden="true" />
+                  <Loader
+                    className="mr-2 h-5 w-5 animate-spin"
+                    aria-hidden="true"
+                  />
                   Loading...
                 </>
               ) : (
@@ -116,6 +119,10 @@ const LoginPage: React.FC = () => {
               Sign up now <ArrowRight className="inline h-4 w-4" />
             </Link>
           </p>
+          <div className="mt-5">
+            test email : 2222@2222.2222,
+            <br /> test password: 2222@2222.2222
+          </div>
         </div>
       </motion.div>
     </div>
