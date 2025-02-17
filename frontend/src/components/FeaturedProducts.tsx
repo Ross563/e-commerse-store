@@ -65,10 +65,10 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="text-lg font-semibold mb-2 text-white">
+                      <h3 className="text-lg font-semibold mb-2 text-emerald-800">
                         {product.name}
                       </h3>
-                      <p className="text-emerald-300 font-medium mb-4">
+                      <p className="text-emerald-800 font-medium mb-4">
                         ₹{product.price}
                       </p>
                       <button
