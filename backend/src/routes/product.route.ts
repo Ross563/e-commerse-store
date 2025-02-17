@@ -24,7 +24,7 @@ router.post(
   "/",
   protectRoute,
   adminRoute,
-  upload.single("productImage"),
+  upload.single("image"),
   createProduct
 );
 router.patch("/:id", protectRoute, adminRoute, toggleFeaturedProduct);

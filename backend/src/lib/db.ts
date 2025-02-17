@@ -8,6 +8,12 @@ const pool = new Pool({
   ssl: {
     rejectUnauthorized: false,
   },
+  keepAlive: true,
+});
+
+pool.on("error", (err, client) => {
+  console.error("Unexpected error on idle client", err);
+  process.exit(-1);
 });
 
 pool.on("connect", () => {
