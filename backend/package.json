@@ -4,9 +4,11 @@
   "main": "index.ts",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc",
+    "build": "npm run clean && tsc",
     "watch": "tsc -w",
-    "dev": "npx tsx watch ./src/index.ts"
+    "dev": "npx tsx watch ./src/index.ts",
+    "postinstall": "npm install",
+    "clean": "rm -rf dist"
   },
   "type": "module",
   "author": "Roshan Maurya",
