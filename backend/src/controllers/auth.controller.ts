@@ -22,7 +22,7 @@ const setCookies = (res: Response, accessToken: string) => {
   res.cookie("accessToken", accessToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
 };
@@ -109,7 +109,11 @@ export const changeRole = async (req: Request, res: Response) => {
 
 export const logout = async (req: Request, res: Response): Promise<void> => {
   try {
-    res.clearCookie("accessToken");
+    res.clearCookie("accessToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    });
     res.json({ message: "Logged out successfully" });
   } catch (error) {
     console.log("Error in logout controller", (error as Error).message);
