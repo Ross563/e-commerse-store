@@ -5,8 +5,8 @@ dotenv.config();
 
 export const redis = new Redis({
   password: process.env.REDIS_PASSWORD as string,
-  host: "redis-11513.c301.ap-south-1-1.ec2.redns.redis-cloud.com",
-  port: 11513,
+  host: "redis-12939.c301.ap-south-1-1.ec2.redns.redis-cloud.com",
+  port: 12939,
 });
 
 redis.on("connect", () => {
